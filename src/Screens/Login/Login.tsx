@@ -15,7 +15,11 @@ import WELCOMESVG from '../../assets/welcome.svg';
 import EMAIL from '../../assets/email.svg';
 import LOCK from '../../assets/lock.svg';
 
-export const Login = () => {
+type Props = {
+  navigation: any;
+};
+
+export const Login = ({navigation}: Props) => {
   const [login, setLogin] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
@@ -34,7 +38,7 @@ export const Login = () => {
 
   const Login = () => {
     if (login == 'admin' && password == 'password') {
-      console.log('good');
+      navigation.navigate('Main');
     } else {
       Toast.show({
         type: 'error',
