@@ -53,8 +53,8 @@ export const Main = ({navigation}: Props) => {
   };
 
   //navigate to next page
-  const navigateNextPage = () => {
-    navigation.navigate('Image');
+  const navigateNextPage = (img: string) => {
+    navigation.navigate('Image', {img: img});
   };
 
   return (
@@ -65,12 +65,12 @@ export const Main = ({navigation}: Props) => {
         renderItem={({item}) => (
           <Pressable
             style={styles.container}
-            onPress={() => navigateNextPage()}>
+            onPress={() => navigateNextPage(item.download_url)}>
             <FastImage
               style={styles.image}
               source={{
                 uri: item.download_url,
-                priority: FastImage.priority.normal,
+                priority: FastImage.priority.low,
               }}
               resizeMode={FastImage.resizeMode.contain}
             />
