@@ -10,6 +10,9 @@ import {
   SafeAreaView,
 } from 'react-native';
 import Toast from 'react-native-toast-message';
+import {useDispatch} from 'react-redux';
+
+import {updateDate} from '../../redux/actions';
 
 import WELCOMESVG from '../../assets/welcome.svg';
 import EMAIL from '../../assets/email.svg';
@@ -22,6 +25,8 @@ type Props = {
 export const Login = ({navigation}: Props) => {
   const [login, setLogin] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+
+  const dispatch = useDispatch();
 
   const loginRef: any = useRef(null);
   const passwordRef: any = useRef(null);
@@ -39,6 +44,7 @@ export const Login = ({navigation}: Props) => {
   //login logic
   const Login = () => {
     if (login == 'admin' && password == 'password') {
+      updateDateRedux();
       navigation.navigate('Main');
     } else {
       Toast.show({
@@ -46,6 +52,10 @@ export const Login = ({navigation}: Props) => {
         text1: 'Your creditionals invalid',
       });
     }
+  };
+
+  const updateDateRedux = () => {
+    dispatch(updateDate(new Date().toDateString()));
   };
 
   return (

@@ -1,25 +1,30 @@
 import React from 'react';
+import {Provider} from 'react-redux';
 import {createStackNavigator} from '@react-navigation/stack';
+import {NavigationContainer} from '@react-navigation/native';
 
 import {Login} from './src/Screens/Login/Login';
 import {Main} from './src/Screens/Main/Main';
 import {Image} from './src/Screens/Image/Image';
-import {NavigationContainer} from '@react-navigation/native';
+
+import {store} from './src/redux/store';
 
 function App(): JSX.Element {
   const Stack = createStackNavigator();
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{
-          headerShown: false,
-        }}>
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Main" component={Main} />
-        <Stack.Screen name="Image" component={Image} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <Stack.Navigator
+          screenOptions={{
+            headerShown: false,
+          }}>
+          <Stack.Screen name="Login" component={Login} />
+          <Stack.Screen name="Main" component={Main} />
+          <Stack.Screen name="Image" component={Image} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 }
 
