@@ -9,6 +9,7 @@ import {
   View,
   SafeAreaView,
 } from 'react-native';
+import Toast from 'react-native-toast-message';
 
 import WELCOMESVG from '../../assets/welcome.svg';
 import EMAIL from '../../assets/email.svg';
@@ -21,12 +22,25 @@ export const Login = () => {
   const loginRef: any = useRef(null);
   const passwordRef: any = useRef(null);
 
+  //open input password on full value of block
   const openLoginTextInput = () => {
     loginRef.current.focus();
   };
 
+  //open input password on full value of block
   const openPasswordTextInput = () => {
     passwordRef.current.focus();
+  };
+
+  const Login = () => {
+    if (login == 'admin' && password == 'password') {
+      console.log('good');
+    } else {
+      Toast.show({
+        type: 'error',
+        text1: 'Your creditionals invalid',
+      });
+    }
   };
 
   return (
@@ -47,6 +61,7 @@ export const Login = () => {
                 value={login}
                 placeholder="email"
                 placeholderTextColor={'#FFFFFF'}
+                autoCapitalize="none"
               />
             </Pressable>
             <Pressable style={styles.input} onPress={openPasswordTextInput}>
@@ -58,15 +73,17 @@ export const Login = () => {
                 value={password}
                 placeholder="password"
                 placeholderTextColor={'#FFFFFF'}
+                autoCapitalize="none"
+                secureTextEntry={true}
               />
             </Pressable>
           </View>
-
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button} onPress={Login}>
             <Text style={styles.title}>Login</Text>
           </TouchableOpacity>
         </View>
       </View>
+      <Toast />
     </KeyboardAvoidingView>
   );
 };
