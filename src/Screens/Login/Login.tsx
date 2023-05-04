@@ -36,6 +36,7 @@ export const Login = ({navigation}: Props) => {
     passwordRef.current.focus();
   };
 
+  //login logic
   const Login = () => {
     if (login == 'admin' && password == 'password') {
       navigation.navigate('Main');
