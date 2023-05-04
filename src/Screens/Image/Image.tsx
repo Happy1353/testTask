@@ -9,6 +9,7 @@ type Props = {
 
 export const Image = ({route}: Props) => {
   const image = route.params.img;
+  //updated redux date
   const reduxValue = useSelector((state: any) => state.date);
 
   return (

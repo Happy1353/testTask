@@ -54,6 +54,7 @@ export const Login = ({navigation}: Props) => {
     }
   };
 
+  //update redux value
   const updateDateRedux = () => {
     dispatch(updateDate(new Date().toDateString()));
   };

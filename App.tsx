@@ -3,9 +3,7 @@ import {Provider} from 'react-redux';
 import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
 
-import {Login} from './src/Screens/Login/Login';
-import {Main} from './src/Screens/Main/Main';
-import {Image} from './src/Screens/Image/Image';
+import {Image, Main, Login} from './src/Screens';
 
 import {store} from './src/redux/store';
 
